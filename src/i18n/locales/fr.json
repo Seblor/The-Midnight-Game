@@ -1,0 +1,76 @@
+{
+  "commands": {
+    "set-game": {
+      "description": "Initialise le jeu",
+      "options": {
+        "channel": {
+          "name": "salon",
+          "description": "Le salon dans lequel le jeu sera joué"
+        },
+        "timezone": {
+          "name": "fuseau_horaire",
+          "description": "Le fuseau horaire dans lequel le jeu sera joué"
+        },
+        "language": {
+          "name": "langue",
+          "description": "La langue du jeu"
+        }
+      }
+    },
+    "add-reward": {
+      "description": "Ajoute une récompense",
+      "options": {
+        "wins": {
+          "name": "victoires",
+          "description": "Le nombre de victoires nécessaires pour obtenir la récompense"
+        },
+        "reward": {
+          "name": "récompense",
+          "description": "Le rôle à donner au joueur"
+        }
+      }
+    },
+    "remove-reward": {
+      "description": "Supprime une récompense",
+      "options": {
+        "reward": {
+          "name": "récompense",
+          "description": "Le rôle à supprimer"
+        }
+      }
+    }
+  },
+  "interactions": {
+    "leaderboard": {
+      "leaderboard": "Classement",
+      "score-line_one": "{{rank}}. {{name}} - {{score}} victoire (moyenne de {{average}} secondes)",
+      "score-line_other": "{{rank}}. {{name}} - {{score}} victoires (moyenne de {{average}} secondes)",
+      "no-leaderboard": "Aucun classement"
+    },
+    "midnight": {
+      "error-not-initialized": "Le jeu n'a pas été initialisé",
+      "click-after-player": "Désolé, un joueur a cliqué avant vous :(",
+      "click-too-late": "Tu es en retard de {{hours}} heures, {{minutes}} minutes, et {{seconds}} secondes",
+      "won-game": "Bravo, tu as gagné la partie du jour ! ({{numberOfWins}} victoires !)"
+    },
+    "rewards": {
+      "no-rewards-set": "Aucune récompense",
+      "rewards": "Récompenses",
+      "reward-line": "{{numberOfWins}} victoires -> <@&{{roleId}}>"
+    }
+  },
+  "embed": {
+    "midnight": {
+      "title": "Bienvenue au Jeu de Minuit",
+      "description": "Clique sur le bouton ci-dessous le plus tôt possible après minuit pour gagner la partie.\n||Le jeu se joue au [fuseau horaire \"{{timezone}}\"]({{timezoneUrl}}).||",
+      "last-winner-timestamp": "Dernier gagnant (<t:{{lastWinnerTimestamp}}:R>)",
+      "last-winner": "<@{{lastWinnerId}}> ({{lastWinnerDelay}} secondes)"
+    }
+  },
+  "buttons": {
+    "midnight": "C'est Minuit !",
+    "leaderboard": "Classement",
+    "rewards": "Récompenses",
+    "add-to-server": "Ajouter à mon serveur"
+  }
+}

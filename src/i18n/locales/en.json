@@ -1,0 +1,76 @@
+{
+  "commands": {
+    "set-game": {
+      "description": "Initialize the game",
+      "options": {
+        "channel": {
+          "name": "channel",
+          "description": "The channel where the game will be played"
+        },
+        "timezone": {
+          "name": "timezone",
+          "description": "The timezone of the game"
+        },
+        "language": {
+          "name": "language",
+          "description": "The language of the game"
+        }
+      }
+    },
+    "add-reward": {
+      "description": "Add a reward",
+      "options": {
+        "wins": {
+          "name": "wins",
+          "description": "The number of wins required to get the reward"
+        },
+        "reward": {
+          "name": "reward",
+          "description": "The role to reward the player"
+        }
+      }
+    },
+    "remove-reward": {
+      "description": "Remove a reward",
+      "options": {
+        "reward": {
+          "name": "reward",
+          "description": "The role to reward the player"
+        }
+      }
+    }
+  },
+  "interactions": {
+    "leaderboard": {
+      "leaderboard": "leaderboard",
+      "score-line_one": "{{rank}}. {{name}} - {{score}} win (average of {{average}} seconds)",
+      "score-line_other": "{{rank}}. {{name}} - {{score}} wins (average of {{average}} seconds)",
+      "no-leaderboard": "No one has won yet"
+    },
+    "midnight": {
+      "error-not-initialized": "The game has not been initialized",
+      "click-after-player": "Sorry, someone else clicked before you :(",
+      "click-too-late": "You are {{hours}} hours, {{minutes}} minutes, and {{seconds}} seconds too late",
+      "won-game": "Congratulations, you just won today's game! ({{numberOfWins}} total wins!)"
+    },
+    "rewards": {
+      "no-rewards-set": "No rewards",
+      "rewards": "Rewards",
+      "reward-line": "{{numberOfWins}} wins -> <@&{{roleId}}>"
+    }
+  },
+  "embed": {
+    "midnight": {
+      "title": "Welcome to the Midnight Game!",
+      "description": "Click the button below as close to midnight as possible to win the game!\n||The game will be played in the [\"{{timezone}}\" timezone]({{timezoneUrl}}).||",
+      "last-winner-timestamp": "Last winner (<t:{{lastWinnerTimestamp}}:R>)",
+      "last-winner": "<@{{lastWinnerId}}> ({{lastWinnerDelay}} seconds)"
+    }
+  },
+  "buttons": {
+    "midnight": "Midnight!",
+    "leaderboard": "Leaderboard",
+    "rewards": "Rewards",
+    "add-to-server": "Add to my server"
+  }
+}
