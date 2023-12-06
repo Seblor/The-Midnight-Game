@@ -3,6 +3,7 @@ import { addWinner, getGuildSettings, getRewards, removeReward } from "../db";
 import { getTimeZoneMinutesOffsetOfLocale } from "../utils/time";
 import i18next from "i18next";
 import { createMidnightGameMessage } from "../createMidnightGameMessage";
+import logger from "../logger";
 
 export const logo = new AttachmentBuilder('./assets/logo.webp').setName('logo.webp')
 
@@ -34,12 +35,15 @@ export function onMidnightButtonClick(inter: ButtonInteraction): void {
     const result = addWinner(inter.guildId, inter.user.id, now);
 
     if (result === null) {
+      logger.info(`[${inter.guildId}] User ${inter.user.globalName} (${inter.user.id}) was too late to click the midnight button (clicked after another user)`);
       inter.reply({
         content: i18next.t('interactions.midnight.click-after-player', { lng: language }),
         ephemeral: true
       });
       return;
     }
+
+    logger.info(`[${inter.guildId}] User ${inter.user.globalName} (${inter.user.id}) won the midnight game`);
 
     inter.message.edit(createMidnightGameMessage(
       inter.client,
@@ -68,6 +72,7 @@ export function onMidnightButtonClick(inter: ButtonInteraction): void {
       giveMemberRewards(member, result.numberOfWins);
     });
   } else {
+    logger.info(`[${inter.guildId}] User ${inter.user.globalName} (${inter.user.id}) was too late to click the midnight button (after 00:15)`);
     inter.reply({
       content: i18next.t('interactions.midnight.click-too-late', {
         hours,
