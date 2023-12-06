@@ -12,6 +12,7 @@ const addRewardCommand = {
       fr: i18next.t('commands.add-reward.description', { lng: 'fr' })
     })
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .setDMPermission(false)
     .addIntegerOption(option => option
       .setName(i18next.t('commands.add-reward.options.wins.name', { lng: 'en' }))
       .setNameLocalizations({

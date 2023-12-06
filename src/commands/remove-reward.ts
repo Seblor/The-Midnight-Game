@@ -12,6 +12,7 @@ const removeRewardCommand = {
       fr: i18next.t('commands.remove-reward.description', { lng: 'fr' })
     })
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .setDMPermission(false)
     .addRoleOption(option => option
       .setName(i18next.t('commands.remove-reward.options.reward.name', { lng: 'en' }))
       .setNameLocalizations({
