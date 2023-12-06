@@ -71,6 +71,12 @@ export function getGuildSettings(guildId: string): { channelId: string, timezone
   return { channelId, timezone, language: language as addedLanguages };
 }
 
+/**
+ * @param guildId 
+ * @param memberId 
+ * @param date 
+ * @returns the delay in milliseconds with number of total wins of the member or null if the member was too late
+ */
 export function addWinner(guildId: string, memberId: string, date: Date): { numberOfWins: number, delayInMs: number } | null {
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
