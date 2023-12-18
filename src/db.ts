@@ -77,10 +77,7 @@ export function getGuildSettings(guildId: string): { channelId: string, timezone
  * @param date 
  * @returns the delay in milliseconds with number of total wins of the member or null if the member was too late
  */
-export function addWinner(guildId: string, memberId: string, date: Date): { numberOfWins: number, delayInMs: number } | null {
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const day = date.getDate().toString().padStart(2, '0');
+export function addWinner(guildId: string, memberId: string, localeDay: string, date: Date): { numberOfWins: number, delayInMs: number } | null {
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
   const milliseconds = date.getMilliseconds();
@@ -91,7 +88,7 @@ export function addWinner(guildId: string, memberId: string, date: Date): { numb
     db.run(`
     INSERT INTO Winners (guildId, memberId, date, delayms)
     VALUES (?, ?, ?, ?)
-    `, [guildId, memberId, `${year}-${month}-${day}`, delayInMs]);
+    `, [guildId, memberId, localeDay, delayInMs]);
 
     const numberOfWins = db.prepare<{ numberOfWins: number }, string[]>(`
       SELECT COUNT(*) AS numberOfWins

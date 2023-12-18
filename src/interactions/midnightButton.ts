@@ -32,7 +32,7 @@ export function onMidnightButtonClick(inter: ButtonInteraction): void {
   const { year, month, day, hours, minutes, seconds } = timePastMidnight?.groups ?? {};
 
   if (parseInt(hours) <= 0 && parseInt(minutes) <= 15) {
-    const result = addWinner(inter.guildId, inter.user.id, now);
+    const result = addWinner(inter.guildId, inter.user.id, `${year}-${month}-${day}`, now);
 
     if (result === null) {
       logger.info(`[${inter.guildId}] User ${inter.user.globalName} (${inter.user.id}) was too late to click the midnight button (clicked after another user)`);
