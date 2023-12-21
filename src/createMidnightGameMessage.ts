@@ -25,7 +25,7 @@ export function createMidnightGameMessage(client: Client, language: addedLanguag
           value: i18next.t('embed.midnight.last-winner', {
             lastWinnerId: lastWinner.id,
             lastWinnerDelay: lastWinner.delay < 1e3
-              ? `0.${lastWinner.delay}`
+              ? `0.${String(lastWinner.delay).padStart(3, '0')}`
               : Math.round(lastWinner.delay / 1000),
             lng: language
           })
