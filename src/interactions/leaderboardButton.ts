@@ -21,7 +21,7 @@ export async function showLeaderboard(inter: ButtonInteraction) {
           name: member?.displayName ?? "Unknown",
           score: leader.wins,
           count: leader.wins,
-          average: Math.round(leader.averageDelay / 1e3),
+          average: (leader.averageDelay / 1e3).toFixed(3),
           lng: language
         });
       })
