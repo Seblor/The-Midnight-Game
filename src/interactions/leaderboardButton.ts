@@ -41,6 +41,7 @@ ${i18next.t(`interactions.leaderboard.score-line`, {
       rank: memberIndexInLeaderboard + 1,
       name: inter.user.displayName ?? "Unknown",
       score: memberAsLeader.wins,
+      count: memberAsLeader.wins,
       average: Math.round(memberAsLeader.averageDelay / 1e3),
       lng: language
     })}`
